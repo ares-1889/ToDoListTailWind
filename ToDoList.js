@@ -2,6 +2,7 @@ const form = document.querySelector('[data-inpForm]')
 const inp = document.querySelector('[data-inp]')
 const lists = document.querySelector('[data-tasksContainer]')
 const delButton = document.querySelector('#removeBtn')
+const body = document.querySelector("#bod")
 let submittedTask =[]
 let task = ""
 let tasks = JSON.parse(localStorage.getItem("lsStuff")) || []
@@ -41,15 +42,21 @@ const render = ()=>
       });
 }
 
+
 lists.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === "div") {
-     SelectedListId = e.target.dataset.did
-     SelectedIdArray.push(SelectedListId)
-     save()
-     render()
+    SelectedListId = e.target.dataset.did;
+    if (SelectedIdArray.includes(SelectedListId)) {
+      // If the task is already selected, remove it from the selection
+      SelectedIdArray = SelectedIdArray.filter(id => id !== SelectedListId);
+    } else {
+      // If the task is not selected, add it to the selection
+      SelectedIdArray.push(SelectedListId);
+    }
+    save();
+    render();
   }
 });
-
 
 const clearFirstElement= (param)=>
 {
@@ -77,6 +84,20 @@ delButton.addEventListener("click",()=>
       save()
 }
 )
+
+body.addEventListener("keydown", keyCheck = (event)=>{
+      let KeyId = event.keyCode
+      if(KeyId === 46)
+      {
+           SelectedIdArray.forEach(SelectedListId => {
+      tasks = tasks.filter(task=> task.id  !== SelectedListId)
+      });
+      render()
+      SelectedIdArray=[]
+      
+      save() 
+      }
+})
 
 
 
