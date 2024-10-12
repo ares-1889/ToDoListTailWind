@@ -6,23 +6,30 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body id="bod">
-    <div class="bg-green-200 text-6xl h-[12rem] pt-12"> ToDoList </div>
+<body id="bod" class="">
+    <div class="bg-gradient-to-r from-cyan-500 to-blue-500 text-7xl h-[12rem] pt-12 relative"> ToDoList 
+        <div class="absolute bottom-0 right-0 text-3xl" data-time>
+            abc
+        </div>
+        <div class="absolute bottom-10 right-0 text-3xl" data-date>
+            cde
+        </div>
+    </div>
     <div class="flex">
-        <div class="bg-indigo-500 pl-6 pt-10 pr-20 w-[50%] h-[36rem]">
+        <div class="bg-gradient-to-r from-violet-500 to-fuchsia-500 pl-6 pt-10 pr-20 w-[50%] h-[36rem]">
             <div class="text-4xl">Enter the Task </div>
             <form data-inpForm=""class="pt-10">
                 <input data-inp placeholder="....." class="rounded h-10 w-[80%]">
             </form>
 
-            <div>actually input shit</div>
-            <button class="bg-green-200" id="removeBtn" >remove stuff</button>
+            <div class="pt-[13px]">Press Enter Key to add </div>
+            <button class="bg-gradient-to-r from-sky-500 to-indigo-500 w-[50%] rounded mt-[10%]" id="removeBtn" >Remove</button>
+            <div class="pt-[13px]">You can also use Delete Key to remove</div>
     </div>
-    <div data-tasksContainer class="bg-cyan-50 w-[50%]">nahh add time feauture later with absolute n stuff, list here
+    <div data-tasksContainer class="bg-gradient-to-r from-purple-500 to-pink-500 w-[50%] flex-col h-[36rem] overflow-auto " class="ml-3">
     </div>
     </div>
-    <div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="ToDoList.js"></script>
 </body>
 </html>
